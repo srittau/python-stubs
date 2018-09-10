@@ -4,3 +4,9 @@ contain the functions, classes, and methods I need. Use them as the basis
 of your own stubs by copying the stubs directory into your project and
 modifying the stubs for your needs or using this repository as a git
 submodule. I gladly accept pull requests.
+
+## Usage
+
+```
+git submodule add git@github.com:srittau/python-stubs.git
+```
