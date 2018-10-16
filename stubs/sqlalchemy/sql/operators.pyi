@@ -1,0 +1,6 @@
+from typing import Any
+
+
+class ColumnOperators:
+    def in_(self, other: Any) -> Any: ...
+    def is_(self, other: Any) -> Any: ...
