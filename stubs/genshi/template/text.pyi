@@ -1,0 +1,3 @@
+from .base import Template
+
+class NewTextTemplate(Template): ...
