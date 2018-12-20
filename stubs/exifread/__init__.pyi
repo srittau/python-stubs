@@ -1,0 +1,16 @@
+from typing import Protocol, Any, Iterator, Dict
+
+
+class _Readable(Protocol):
+    def __iter__(self) -> Iterator[bytes]: ...
+    def read(self, size: int) -> bytes: ...
+    def seek(self, what: int) -> Any: ...
+    def tell(self) -> int: ...
+
+def process_file(
+    f: _Readable,
+    stop_tag: str = ...,
+    details: bool = ...,
+    strict: bool = ...,
+    debug: bool = ...,
+) -> Dict[str, Any]: ...
