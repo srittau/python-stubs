@@ -1,7 +1,4 @@
-from typing import (
-    Any, Generic, TypeVar, Type, Union, Callable, overload,
-    Sequence,
-)
+from typing import Any, Generic, TypeVar, Type, Union, Callable, overload, Sequence, Optional
 
 from ..ext.declarative.api import _DeclarativeBase
 from .base import DialectKWArgs, SchemaEventTarget
@@ -42,7 +39,7 @@ class Column(ColumnClause, Generic[_T]):
     def __set__(self, instance: Any, value: _T) -> None: ...
 
 class ForeignKey:
-    def __init__(self, column: Union[str, Column]) -> None: ...
+    def __init__(self, column: Union[str, Column], *, ondelete: Optional[str] = ...) -> None: ...
 
 class Table(DialectKWArgs, TableClause):
     def __new__(cls, *args: Any, **kwargs: Any) -> Table: ...
