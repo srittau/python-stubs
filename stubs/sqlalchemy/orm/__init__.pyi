@@ -19,7 +19,7 @@ from .util import aliased as aliased
 
 _T = TypeVar("_T")
 
-_OrderType = Union[bool, str, Column]
+_OrderType = Union[bool, str, Column[Any]]
 
 load_only: Any
 
@@ -29,12 +29,12 @@ def relationship(
     secondary: None = ...,
     primaryjoin: Optional[Union[str, BooleanClauseList]] = ...,
     secondaryjoin: Optional[Union[str, BooleanClauseList]] = ...,
-    foreign_keys: List[Column] = ...,
+    foreign_keys: List[Column[Any]] = ...,
     *,  # FIXME: more arguments
     order_by: Union[_OrderType, Callable[[], _OrderType]] = ...,
     backref: Union[None, str, Tuple[str, Dict[str, Any]]] = ...,
     lazy: Union[str, bool, None] = ...,
-    remote_side: Optional[Column] = ...,
+    remote_side: Optional[Column[Any]] = ...,
 ) -> RelationshipProperty[Optional[_T]]: ...
 
 @overload
@@ -43,12 +43,12 @@ def relationship(
     secondary: Table,
     primaryjoin: Optional[Union[str, BooleanClauseList]] = ...,
     secondaryjoin: Optional[Union[str, BooleanClauseList]] = ...,
-    foreign_keys: List[Column] = ...,
+    foreign_keys: List[Column[Any]] = ...,
     *,  # FIXME: more arguments
     order_by: Union[_OrderType, Callable[[], _OrderType]] = ...,
     backref: Union[None, str, Tuple[str, Dict[str, Any]]] = ...,
     lazy: Union[str, bool, None] = ...,
-    remote_side: Optional[Column] = ...,
+    remote_side: Optional[Column[Any]] = ...,
 ) -> RelationshipProperty[List[_T]]: ...
 
 @overload
@@ -57,12 +57,12 @@ def relationship(
     secondary: Any = ...,
     primaryjoin: Optional[Union[str, BooleanClauseList]] = ...,
     secondaryjoin: Optional[Union[str, BooleanClauseList]] = ...,
-    foreign_keys: List[Column] = ...,
+    foreign_keys: List[Column[Any]] = ...,
     *,  # FIXME: more arguments
     order_by: Union[_OrderType, Callable[[], _OrderType]] = ...,
     backref: Union[None, str, Tuple[str, Dict[str, Any]]] = ...,
     lazy: Union[str, bool, None] = ...,
-    remote_side: Optional[Column] = ...,
+    remote_side: Optional[Column[Any]] = ...,
 ) -> RelationshipProperty[Any]: ...
 
 relation = relationship
