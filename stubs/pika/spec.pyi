@@ -1,0 +1,3 @@
+from .amqp_object import Properties
+
+class BasicProperties(Properties): ...
