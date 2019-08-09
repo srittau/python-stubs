@@ -6,6 +6,8 @@ from .spec import Basic, BasicProperties
 
 
 class Channel(object):
+    def basic_cancel(self, consumer_tag: str = ..., callback: Optional[Callable[[Method], Any]] = ...) -> None: ...
+
     def basic_consume(
         self,
         queue: str,
@@ -16,6 +18,8 @@ class Channel(object):
         arguments: Optional[Arguments] = ...,
         callback: Optional[Callable[[Method], Any]] = ...,
     ) -> str: ...
+
+    def close(self, reply_code: int = ..., reply_text: str = ...) -> None: ...
 
     def exchange_declare(
         self,
@@ -47,4 +51,8 @@ class Channel(object):
         auto_delete: bool = ...,
         arguments: Optional[Arguments] = ...,
         callback: Optional[Callable[[Method], None]] = ...,
+    ) -> None: ...
+
+    def queue_delete(
+        self, queue: str, if_unused: bool = ..., if_empty: bool = ..., callback: Optional[Callable[[Method], Any]] = ...,
     ) -> None: ...
