@@ -1,3 +1,6 @@
-from .amqp_object import Properties
+from .amqp_object import Class, Method, Properties
+
+class Basic(Class):
+    class Deliver(Method): ...
 
 class BasicProperties(Properties): ...

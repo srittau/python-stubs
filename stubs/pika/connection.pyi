@@ -1,5 +1,7 @@
 from typing import Any, Callable, Dict, Optional, Text, Union
 
+from .channel import Channel
+from .compat import AbstractBase
 from .credentials import PlainCredentials, ExternalCredentials
 
 class Parameters(object): ...
@@ -26,3 +28,8 @@ class ConnectionParameters(Parameters):
     ) -> None: ...
 
 class SSLOptions(object): ...
+
+class Connection(AbstractBase):
+    def channel(
+        self, channel_number: Optional[int] = ..., on_open_callback: Optional[Callable[[Channel], Any]] = ...,
+    ) -> Channel: ...

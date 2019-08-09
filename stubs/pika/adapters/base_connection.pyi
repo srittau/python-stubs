@@ -1,0 +1,3 @@
+from pika import connection
+
+class BaseConnection(connection.Connection): ...
