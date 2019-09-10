@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Optional
 
 
 class _FunctionGenerator:
@@ -6,3 +6,8 @@ class _FunctionGenerator:
     def __getattr__(self, item: str) -> _FunctionGenerator: ...
 
 func: _FunctionGenerator
+
+class GenericFunction: ...
+
+class count(GenericFunction):
+    def __init__(self, expression: Optional[Any] = ..., **kwargs: Any) -> None: ...
