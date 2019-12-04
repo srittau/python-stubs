@@ -1,6 +1,7 @@
 import datetime
+import sys
 from typing import Any, Generic, TypeVar, Type, Union, Callable, overload, \
-    Sequence, Optional, Literal
+    Sequence, Optional
 
 from ..ext.declarative.api import _DeclarativeBase
 from .base import DialectKWArgs, SchemaEventTarget
@@ -9,6 +10,11 @@ from .selectable import TableClause
 from .sqltypes import Integer, TIMESTAMP, Boolean, String, Unicode, JSON, Date, \
     DateTime
 from .type_api import TypeEngine
+
+if sys.version_info >= (3, 8):
+    from typing import Literal
+else:
+    from typing_extensions import Literal
 
 _T = TypeVar("_T")
 
