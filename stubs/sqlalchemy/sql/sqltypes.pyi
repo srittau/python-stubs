@@ -1,8 +1,10 @@
 import enum
-from typing import Optional, overload, Type
+from typing import Optional, overload, Type, Generic, TypeVar
 
 from .base import SchemaEventTarget
 from .type_api import TypeEngine, Emulated
+
+_E = TypeVar("_E", bound=enum.Enum)
 
 class Boolean(TypeEngine): ...
 class Date(TypeEngine): ...
@@ -37,8 +39,8 @@ class Unicode(String):
 
 class SchemaType(SchemaEventTarget): ...
 
-class Enum(Emulated, String, SchemaType):
+class Enum(Emulated, String, SchemaType, Generic[_E]):
     @overload
-    def __init__(self, enums: Type[enum.Enum]) -> None: ...
+    def __init__(self, enums: Type[_E]) -> None: ...
     @overload
     def __init__(self, *enums: str) -> None: ...

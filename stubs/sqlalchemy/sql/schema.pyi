@@ -1,4 +1,5 @@
 import datetime
+import enum
 import sys
 from typing import Any, Generic, TypeVar, Type, Union, Callable, overload, \
     Sequence, Optional
@@ -8,7 +9,7 @@ from .base import DialectKWArgs, SchemaEventTarget
 from .elements import ColumnClause
 from .selectable import TableClause
 from .sqltypes import Integer, TIMESTAMP, Boolean, String, Unicode, JSON, Date, \
-    DateTime
+    DateTime, Enum
 from .type_api import TypeEngine
 
 if sys.version_info >= (3, 8):
@@ -17,6 +18,7 @@ else:
     from typing_extensions import Literal
 
 _T = TypeVar("_T")
+_E = TypeVar("_E", bound=enum.Enum)
 
 class Column(ColumnClause[_T], Generic[_T]):
     @overload
@@ -32,6 +34,17 @@ class Column(ColumnClause[_T], Generic[_T]):
     ) -> None: ...
     @overload
     def __init__(
+        self: Column[bool],
+        type_: Type[Boolean],
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
         self: Column[Optional[bool]],
         type_: Type[Boolean],
         *args: Any,
@@ -49,6 +62,18 @@ class Column(ColumnClause[_T], Generic[_T]):
         *args: Any,
         primary_key: bool = ...,
         nullable: Literal[False],
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[bool],
+        column: str,
+        type_: Type[Boolean],
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
         unique: bool = ...,
         default: Union[_T, Callable[[], _T]] = ...,
         server_default: str = ...,
@@ -133,6 +158,77 @@ class Column(ColumnClause[_T], Generic[_T]):
         nullable: Literal[True] = ...,
         unique: bool = ...,
         default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+
+    # needs to be before str, since this is a subtype
+    @overload
+    def __init__(
+        self: Column[_E],
+        type_: Enum[_E],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[False],
+        unique: bool = ...,
+        default: Union[_E, Callable[[], _E]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[_E],
+        type_: Enum[_E],
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
+        unique: bool = ...,
+        default: Union[_E, Callable[[], _E]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Optional[_E]],
+        type_: Enum[_E],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[True] = ...,
+        unique: bool = ...,
+        default: Union[Optional[_E], Callable[[], Optional[_E]]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[_E],
+        column: Enum[_E],
+        type_: Union[JSON, Type[JSON]],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[False],
+        unique: bool = ...,
+        default: Union[_E, Callable[[], _E]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[_E],
+        column: Enum[_E],
+        type_: Union[JSON, Type[JSON]],
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
+        unique: bool = ...,
+        default: Union[_E, Callable[[], _E]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Optional[_E]],
+        column: Enum[_E],
+        type_: Union[JSON, Type[JSON]],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[True] = ...,
+        unique: bool = ...,
+        default: Union[Optional[_E], Callable[[], Optional[_E]]] = ...,
         server_default: str = ...,
     ) -> None: ...
 
