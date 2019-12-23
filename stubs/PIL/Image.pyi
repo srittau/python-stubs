@@ -28,6 +28,7 @@ FLOYDSTEINBERG: int
 WEB: int
 ADAPTIVE: int
 
+def new(mode: str, size: Tuple[int, int], color: Union[float, Tuple[float, ...]]) -> Image: ...
 def open(fp: Union[str, bytes, Path, _Readable], mode: str = ...) -> ImageFile: ...
 
 _ConversionMatrix = Union[
@@ -54,6 +55,12 @@ class Image(object):
         palette: int = ...,
         colors: int = ...,
     ) -> Image: ...
+    def paste(
+        self,
+        im: Image,
+        box: Union[None, Tuple[float, float], Tuple[float, float, float, float]] = ...,
+        mask: Optional[Image] = ...,
+    ) -> None: ...
     def resize(
         self,
         size: Tuple[int, int],
