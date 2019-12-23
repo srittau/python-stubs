@@ -1,7 +1,13 @@
-from typing import Optional, Tuple, Union, Any, Literal
+import sys
+from typing import Optional, Tuple, Union, Any
 
 from .Image import Image
 from .ImageFont import _Font
+
+if sys.version_info >= (3, 8):
+    from typing import Literal
+else:
+    from typing_extensions import Literal
 
 _Ink = Union[str, Tuple[int, int, int]]
 
