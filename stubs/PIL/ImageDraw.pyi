@@ -18,6 +18,15 @@ class ImageDraw(object):
     def multiline_text(self, xy: Tuple[float, float], text: Union[str, bytes], fill: Optional[_Ink] = ...,
                        font: Optional[_Font] = ..., anchor: Any = ...,
                        spacing: int = ..., align: str = ..., direction: Any = ..., features: Any = ...) -> None: ...
+    def pieslice(
+        self,
+        xy: Tuple[Tuple[float, float], Tuple[float, float]],
+        start: float,
+        end: float,
+        fill: Optional[_Ink] = ...,
+        outline: Optional[_Ink] = ...,
+        width: float = ...,
+    ) -> None: ...
     def rectangle(
         self,
         xy: Union[Tuple[float, float, float, float], Tuple[Tuple[float, float], Tuple[float, float]]],
