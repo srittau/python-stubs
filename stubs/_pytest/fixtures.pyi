@@ -1,5 +1,10 @@
-from typing import Union, Literal, Callable, Any, Optional, List, overload, \
-    TypeVar
+import sys
+from typing import Union, Callable, Any, Optional, List, TypeVar, overload
+
+if sys.version_info >= (3, 8):
+    from typing import Literal
+else:
+    from typing_extensions import Literal
 
 _F = TypeVar("_F", bound=Callable[[], Any])
 _Scope = Literal["function", "class", "module", "package", "session"]
