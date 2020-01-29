@@ -2,7 +2,7 @@ import enum
 from typing import Optional, overload, Type, Generic, TypeVar
 
 from .base import SchemaEventTarget
-from .type_api import TypeEngine, Emulated
+from .type_api import TypeEngine as TypeEngine, Emulated
 
 _E = TypeVar("_E", bound=enum.Enum)
 

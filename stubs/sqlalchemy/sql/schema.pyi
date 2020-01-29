@@ -4,6 +4,7 @@ import sys
 from typing import Any, Generic, TypeVar, Type, Union, Callable, overload, \
     Sequence, Optional
 
+from ..dialects.postgresql import UUID
 from ..ext.declarative.api import _DeclarativeBase
 from .base import DialectKWArgs, SchemaEventTarget
 from .elements import ColumnClause
@@ -439,6 +440,76 @@ class Column(ColumnClause[_T], Generic[_T]):
         nullable: Literal[True] = ...,
         unique: bool = ...,
         default: Union[Optional[datetime.datetime], Callable[[], Optional[datetime.datetime]]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+
+    @overload
+    def __init__(
+        self: Column[str],
+        type_: Union[UUID, Type[UUID]],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[False],
+        unique: bool = ...,
+        default: Union[str, Callable[[], str]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[str],
+        type_: Union[UUID, Type[UUID]],
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
+        unique: bool = ...,
+        default: Union[str, Callable[[], str]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Optional[str]],
+        type_: Union[UUID, Type[UUID]],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[True] = ...,
+        unique: bool = ...,
+        default: Union[Optional[str], Callable[[], Optional[str]]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[str],
+        column: str,
+        type_: Union[UUID, Type[UUID]],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[False],
+        unique: bool = ...,
+        default: Union[str, Callable[[], str]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[str],
+        column: str,
+        type_: Union[UUID, Type[UUID]],
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
+        unique: bool = ...,
+        default: Union[str, Callable[[], str]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Optional[str]],
+        column: str,
+        type_: Union[UUID, Type[UUID]],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[True] = ...,
+        unique: bool = ...,
+        default: Union[Optional[str], Callable[[], Optional[str]]] = ...,
         server_default: str = ...,
     ) -> None: ...
 
