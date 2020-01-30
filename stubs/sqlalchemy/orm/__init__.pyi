@@ -23,6 +23,9 @@ _OrderType = Union[bool, str, Column[Any]]
 
 load_only: Any
 
+def compile_mappers() -> None: ...
+def clear_mappers() -> None: ...
+
 @overload
 def relationship(
     argument: Type[_T],

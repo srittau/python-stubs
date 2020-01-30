@@ -1,6 +1,7 @@
 from .schema import (
     Column as Column,
     ForeignKey as ForeignKey,
+    MetaData as MetaData,
     Table as Table,
 )
 from .sql import (

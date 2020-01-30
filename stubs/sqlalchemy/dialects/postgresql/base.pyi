@@ -1,0 +1,3 @@
+from ...sql import sqltypes
+
+class UUID(sqltypes.TypeEngine): ...
