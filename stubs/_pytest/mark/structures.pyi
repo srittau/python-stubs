@@ -15,5 +15,7 @@ class MarkGenerator:
         ids: Union[None, List[Union[None, str]], Callable[[Any], Optional[str]]] = ...,
         scope: Optional[str] = ...,
     ) -> Callable[[_F], _F]: ...
+    def skip(self, reason: Optional[str] = ...) -> Callable[[_F], _F]: ...
+
 
 MARK_GEN: MarkGenerator
