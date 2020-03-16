@@ -9,8 +9,8 @@ from ..ext.declarative.api import _DeclarativeBase
 from .base import DialectKWArgs, SchemaEventTarget
 from .elements import ColumnClause
 from .selectable import TableClause
-from .sqltypes import Integer, TIMESTAMP, Boolean, String, Unicode, JSON, Date, \
-    DateTime, Enum
+from .sqltypes import Integer, TIMESTAMP, Boolean, String, Unicode, JSON, \
+    Date, Time, DateTime, Enum
 from .type_api import TypeEngine
 
 if sys.version_info >= (3, 8):
@@ -370,6 +370,76 @@ class Column(ColumnClause[_T], Generic[_T]):
         nullable: Literal[True] = ...,
         unique: bool = ...,
         default: Union[Optional[datetime.date], Callable[[], Optional[datetime.date]]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+
+    @overload
+    def __init__(
+        self: Column[datetime.time],
+        type_: Union[Time, Type[Time]],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[False],
+        unique: bool = ...,
+        default: Union[datetime.time, Callable[[], datetime.time]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[datetime.time],
+        type_: Union[Time, Type[Time]],
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
+        unique: bool = ...,
+        default: Union[datetime.time, Callable[[], datetime.time]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Optional[datetime.time]],
+        type_: Union[Time, Type[Time]],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[True] = ...,
+        unique: bool = ...,
+        default: Union[Optional[datetime.time], Callable[[], Optional[datetime.time]]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[datetime.time],
+        column: str,
+        type_: Union[Time, Type[Time]],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[False],
+        unique: bool = ...,
+        default: Union[datetime.time, Callable[[], datetime.time]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[datetime.time],
+        column: str,
+        type_: Union[Time, Type[Time]],
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
+        unique: bool = ...,
+        default: Union[datetime.time, Callable[[], datetime.time]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Optional[datetime.time]],
+        column: str,
+        type_: Union[Time, Type[Time]],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[True] = ...,
+        unique: bool = ...,
+        default: Union[Optional[datetime.time], Callable[[], Optional[datetime.time]]] = ...,
         server_default: str = ...,
     ) -> None: ...
 
