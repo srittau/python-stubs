@@ -6,7 +6,7 @@ if sys.version_info >= (3, 8):
 else:
     from typing_extensions import Literal
 
-_F = TypeVar("_F", bound=Callable[[], Any])
+_F = TypeVar("_F", bound=Callable[..., Any])
 _Scope = Literal["function", "class", "module", "package", "session"]
 _FixtureF = Callable[[str, Any], _Scope]
 
