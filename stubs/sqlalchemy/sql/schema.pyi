@@ -1,17 +1,31 @@
+# TODO: incomplete
+
 import datetime
 import enum
 import sys
-from typing import Any, Generic, TypeVar, Type, Union, Callable, overload, \
-    Sequence, Optional
+from typing import (
+    Any, Callable, Generic, Optional, Sequence, Type, TypeVar, Union, overload,
+)
 
 from ..dialects.postgresql import UUID
 from ..ext.declarative.api import _DeclarativeBase
 from .base import DialectKWArgs, SchemaEventTarget
 from .elements import ColumnClause
 from .selectable import TableClause
-from .sqltypes import Integer, TIMESTAMP, Boolean, String, Unicode, JSON, \
-    Date, Time, DateTime, Enum
+from .sqltypes import (
+    Boolean,
+    Date,
+    DateTime,
+    Enum,
+    Integer,
+    JSON,
+    String,
+    Time,
+    TIMESTAMP,
+    Unicode,
+)
 from .type_api import TypeEngine
+from .visitors import Visitable
 
 if sys.version_info >= (3, 8):
     from typing import Literal
@@ -21,7 +35,11 @@ else:
 _T = TypeVar("_T")
 _E = TypeVar("_E", bound=enum.Enum)
 
-class Column(ColumnClause[_T], Generic[_T]):
+# TODO: incomplete
+class SchemaItem(SchemaEventTarget, Visitable): ...
+
+# TODO: incomplete
+class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     @overload
     def __init__(
         self: Column[bool],
@@ -689,7 +707,6 @@ class ForeignKey:
 class Table(DialectKWArgs, TableClause):
     def __new__(cls, *args: Any, **kwargs: Any) -> Table: ...
 
-class SchemaItem(SchemaEventTarget): ...
 class Constraint(DialectKWArgs, SchemaItem): ...
 class ColumnCollectionMixin: ...
 class ColumnCollectionConstraint(ColumnCollectionMixin, Constraint): ...
