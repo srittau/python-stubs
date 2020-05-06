@@ -1,5 +1,5 @@
 import sys
-from typing import Union, Callable, Any, Optional, List, TypeVar, overload
+from typing import Any, Callable, List, Optional, TypeVar, Union
 
 if sys.version_info >= (3, 8):
     from typing import Literal
@@ -11,13 +11,12 @@ _Scope = Literal["function", "class", "module", "package", "session"]
 _FixtureF = Callable[[str, Any], _Scope]
 
 class FixtureFunctionMarker:
-    pass
+    def __call__(self, function: _F) -> _F: ...
 
-@overload
-def fixture(callable_or_scope: _F) -> _F: ...
-@overload
 def fixture(
-    scope: Union[None, _Scope, _FixtureF] = ...,
+    callable_or_scope: Union[None, _Scope, Callable[..., Any]] = ...,
+    *args: Any,
+    scope: str = ...,
     params: Optional[List[Any]] = ...,
     autouse: bool = ...,
     ids: Optional[List[str]] = ...,
