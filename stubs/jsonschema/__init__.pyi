@@ -8,4 +8,11 @@ from ._format import (
     draft7_format_checker as draft7_format_checker,
 )
 from .exceptions import ValidationError as ValidationError
-from .validators import validate as validate, RefResolver as RefResolver
+from .validators import (
+    Draft3Validator as Draft3Validator,
+    Draft4Validator as Draft4Validator,
+    Draft6Validator as Draft6Validator,
+    Draft7Validator as Draft7Validator,
+    RefResolver as RefResolver,
+    validate as validate,
+)

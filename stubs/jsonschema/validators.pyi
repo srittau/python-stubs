@@ -1,9 +1,15 @@
+# incomplete
+
 from typing import Optional, Any, Type, Mapping, Callable
 
-
-class _Validator(object): ...
+class _Validator: ...
 
 def validate(instance: object, schema: object, cls: Optional[Type[_Validator]] = None, *args: Any, **kwargs: Any) -> None: ...
+
+Draft3Validator: Type[_Validator]
+Draft4Validator: Type[_Validator]
+Draft6Validator: Type[_Validator]
+Draft7Validator: Type[_Validator]
 
 class RefResolver(object):
     def __init__(
