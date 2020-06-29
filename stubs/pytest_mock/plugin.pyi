@@ -7,7 +7,7 @@ from unittest.mock import MagicMock
 _T = TypeVar("_T")
 
 class MockFixture:
-    mock_module: unittest.mock module
+    mock_module: Any  # unittest.mock module
     Mock: unittest.mock.Mock
     MagicMock: unittest.mock.MagicMock
     NonCallableMock: unittest.mock.NonCallableMock
