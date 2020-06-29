@@ -1,12 +1,23 @@
-# incomplete
+# Incomplete, more complete version in typeshed HEAD.
 
+import unittest.mock
 from typing import Any, TypeVar, overload
 from unittest.mock import MagicMock
 
 _T = TypeVar("_T")
 
 class MockFixture:
-    mock_module: Any  # unittest.mock module
+    mock_module: unittest.mock module
+    Mock: unittest.mock.Mock
+    MagicMock: unittest.mock.MagicMock
+    NonCallableMock: unittest.mock.NonCallableMock
+    PropertyMock: unittest.mock.PropertyMock
+    call: unittest.mock.call
+    ANY: unittest.mock.ANY
+    DEFAULT: unittest.mock.DEFAULT
+    create_autospec: unittest.mock.create_autospec
+    sentinel: unittest.mock.sentinel
+    mock_open: unittest.mock.mock_open
     def __init__(self, config: Any) -> None: ...
     patch: _Patcher
 
