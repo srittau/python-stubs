@@ -8,6 +8,7 @@ from typing import (
 )
 
 from ..dialects.postgresql import UUID
+from ..engine import Engine
 from ..ext.declarative.api import _DeclarativeBase
 from .base import DialectKWArgs, SchemaEventTarget
 from .elements import ColumnClause
@@ -704,6 +705,11 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
 class ForeignKey:
     def __init__(self, column: Union[str, Column[Any]], *, ondelete: Optional[str] = ...) -> None: ...
 
+class _NotAColumnExpr: ...
+
+# TODO: incomplete
+class DefaultGenerator(_NotAColumnExpr, SchemaItem): ...
+
 class Table(DialectKWArgs, TableClause):
     def __new__(cls, *args: Any, **kwargs: Any) -> Table: ...
 
@@ -714,4 +720,7 @@ class ColumnCollectionConstraint(ColumnCollectionMixin, Constraint): ...
 class ForeignKeyConstraint(ColumnCollectionConstraint):
     def __init__(self, columns: Sequence[Union[Column[Any], str]], refcolumns: Sequence[Union[Column[Any], str]]) -> None: ...
 
-class MetaData(SchemaItem): ...
+# incomplete
+class MetaData(SchemaItem):
+    def is_bound(self) -> bool: ...
+    bind: Engine
