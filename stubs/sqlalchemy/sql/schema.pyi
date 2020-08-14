@@ -3,6 +3,7 @@
 import datetime
 import enum
 import sys
+from decimal import Decimal
 from typing import (
     Any, Callable, Generic, Optional, Sequence, Type, TypeVar, Union, overload,
 )
@@ -17,6 +18,7 @@ from .sqltypes import (
     Boolean,
     Date,
     DateTime,
+    DECIMAL,
     Enum,
     Integer,
     JSON,
@@ -173,6 +175,76 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
         self: Column[Optional[int]],
         column: str,
         type_: Type[Integer],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[True] = ...,
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+
+    @overload
+    def __init__(
+        self: Column[Decimal],
+        type_: Type[DECIMAL],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[False],
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Decimal],
+        type_: Type[DECIMAL],
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Optional[Decimal]],
+        type_: Type[DECIMAL],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[True] = ...,
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Decimal],
+        column: str,
+        type_: Type[DECIMAL],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[False],
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Decimal],
+        column: str,
+        type_: Type[DECIMAL],
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Optional[Decimal]],
+        column: str,
+        type_: Type[DECIMAL],
         *args: Any,
         primary_key: bool = ...,
         nullable: Literal[True] = ...,
