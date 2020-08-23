@@ -22,6 +22,7 @@ from .sqltypes import (
     Enum,
     Integer,
     JSON,
+    Numeric,
     String,
     Time,
     TIMESTAMP,
@@ -245,6 +246,76 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
         self: Column[Optional[Decimal]],
         column: str,
         type_: Type[DECIMAL],
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[True] = ...,
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+
+    @overload
+    def __init__(
+        self: Column[float],
+        type_: Numeric,
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[False],
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[float],
+        type_: Numeric,
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Optional[float]],
+        type_: Numeric,
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[True] = ...,
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[float],
+        column: str,
+        type_: Numeric,
+        *args: Any,
+        primary_key: bool = ...,
+        nullable: Literal[False],
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[float],
+        column: str,
+        type_: Numeric,
+        *args: Any,
+        primary_key: Literal[True],
+        nullable: bool = ...,
+        unique: bool = ...,
+        default: Union[_T, Callable[[], _T]] = ...,
+        server_default: str = ...,
+    ) -> None: ...
+    @overload
+    def __init__(
+        self: Column[Optional[float]],
+        column: str,
+        type_: Numeric,
         *args: Any,
         primary_key: bool = ...,
         nullable: Literal[True] = ...,
