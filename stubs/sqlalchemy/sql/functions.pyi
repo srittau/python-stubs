@@ -7,7 +7,7 @@ from .elements import ColumnElement
 from .selectable import FromClause
 
 # incomplete
-class FunctionElement(Executable, ColumnElement, FromClause): ...
+class FunctionElement(Executable, ColumnElement[Any], FromClause): ...
 
 # incomplete
 class _FunctionGenerator:
