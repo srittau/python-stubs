@@ -20,6 +20,7 @@ from .sqltypes import (
     DateTime,
     DECIMAL,
     Enum,
+    Float,
     Integer,
     JSON,
     Numeric,
@@ -257,7 +258,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     @overload
     def __init__(
         self: Column[float],
-        type_: Numeric,
+        type_: Union[Type[Float], Numeric],
         *args: Any,
         primary_key: bool = ...,
         nullable: Literal[False],
@@ -268,7 +269,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     @overload
     def __init__(
         self: Column[float],
-        type_: Numeric,
+        type_: Union[Type[Float], Numeric],
         *args: Any,
         primary_key: Literal[True],
         nullable: bool = ...,
@@ -279,7 +280,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     @overload
     def __init__(
         self: Column[Optional[float]],
-        type_: Numeric,
+        type_: Union[Type[Float], Numeric],
         *args: Any,
         primary_key: bool = ...,
         nullable: Literal[True] = ...,
@@ -291,7 +292,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     def __init__(
         self: Column[float],
         column: str,
-        type_: Numeric,
+        type_: Union[Type[Float], Numeric],
         *args: Any,
         primary_key: bool = ...,
         nullable: Literal[False],
@@ -303,7 +304,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     def __init__(
         self: Column[float],
         column: str,
-        type_: Numeric,
+        type_: Union[Type[Float], Numeric],
         *args: Any,
         primary_key: Literal[True],
         nullable: bool = ...,
@@ -315,7 +316,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     def __init__(
         self: Column[Optional[float]],
         column: str,
-        type_: Numeric,
+        type_: Union[Type[Float], Numeric],
         *args: Any,
         primary_key: bool = ...,
         nullable: Literal[True] = ...,
