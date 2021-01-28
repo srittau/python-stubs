@@ -1,6 +1,11 @@
-from typing import Tuple, Optional, Union, Type
+from typing import Optional, Tuple, Type, Union
 
-from ..utils.handlers import HasRounds, HasRawSalt, HasRawChecksum, GenericHandler
+from ..utils.handlers import (
+    GenericHandler,
+    HasRawChecksum,
+    HasRawSalt,
+    HasRounds,
+)
 
 class Pbkdf2DigestHandler(HasRounds, HasRawSalt, HasRawChecksum, GenericHandler):
     setting_kwds: Tuple[str, str, str] = ...
@@ -22,8 +27,13 @@ class _DynamicPbkdf2DigestHandler(Pbkdf2DigestHandler):
     checksum_size: int
     encoded_checksum_size: int
 
-def create_pbkdf2_hash(hash_name: str, digest_size: int, rounds: int = ..., ident: Optional[str] = ...,
-                       module: str = ...) -> Type[_DynamicPbkdf2DigestHandler]: ...
+def create_pbkdf2_hash(
+    hash_name: str,
+    digest_size: int,
+    rounds: int = ...,
+    ident: Optional[str] = ...,
+    module: str = ...,
+) -> Type[_DynamicPbkdf2DigestHandler]: ...
 
 pbkdf2_sha1: Type[_DynamicPbkdf2DigestHandler]
 pbkdf2_sha256: Type[_DynamicPbkdf2DigestHandler]
