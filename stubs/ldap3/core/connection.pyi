@@ -1,7 +1,8 @@
 # incomplete
 
 from types import TracebackType
-from typing import Any, Literal, Optional, Type, Union
+from typing import Any, Optional, Type, Union
+from typing_extensions import Literal
 
 from .server import Server
 

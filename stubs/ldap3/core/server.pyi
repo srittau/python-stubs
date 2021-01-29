@@ -1,4 +1,5 @@
-from typing import Any, Literal, Optional
+from typing import Any, Optional
+from typing_extensions import Literal
 
 
 class Server:

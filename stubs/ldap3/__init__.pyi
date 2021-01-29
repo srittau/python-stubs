@@ -1,6 +1,6 @@
 # incomplete
 
-from typing import Literal
+from typing_extensions import Literal
 
 from .core.connection import Connection as Connection
 from .core.server import Server as Server
