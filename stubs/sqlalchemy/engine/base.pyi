@@ -14,6 +14,7 @@ from .interfaces import Connectable, Dialect
 
 # incomplete
 class Connection(Connectable):
+    engine: Engine
     @property
     def closed(self) -> bool: ...
     def begin(self) -> Transaction: ...
