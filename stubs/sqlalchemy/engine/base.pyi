@@ -36,6 +36,10 @@ class Engine(Connectable, Identified):
     echo: Optional[bool]
     hide_parameters: bool
 
+    class _trans_ctx:
+        def __enter__(self) -> Connection: ...
+        def __exit__(self, type_: type[BaseException] | None, value: BaseException | None, traceback: TracebackType | None) -> None: ...
+
     def __init__(
         self,
         pool: Pool,
@@ -53,6 +57,7 @@ class Engine(Connectable, Identified):
     @property
     def name(self) -> str: ...
     def connect(self, **kwargs: Any) -> Connection: ...
+    def begin(self, close_with_result: bool = ...) -> _trans_ctx: ...
 
 class Transaction:
     connection: Connection
