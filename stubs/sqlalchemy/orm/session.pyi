@@ -13,6 +13,8 @@ _T = TypeVar("_T")
 
 # incomplete
 class Session:
+    def rollback(self) -> None: ...
+    def commit(self) -> None: ...
     def connection(
         self,
         mapper: Optional[Any] = ...,
