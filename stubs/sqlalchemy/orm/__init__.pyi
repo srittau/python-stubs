@@ -64,10 +64,13 @@ def relationship(
     primaryjoin: Optional[Union[str, BooleanClauseList]] = ...,
     secondaryjoin: Optional[Union[str, BooleanClauseList]] = ...,
     foreign_keys: List[Column[Any]] = ...,
-    *,  # FIXME: more arguments
+    uselist: Optional[bool] = ...,
     order_by: Union[_OrderType, Callable[[], _OrderType]] = ...,
     backref: Union[None, str, Tuple[str, Dict[str, Any]]] = ...,
+    *,  # FIXME: more arguments
     lazy: Union[str, bool, None] = ...,
+    passive_deletes: bool = ...,
+    passive_updates: bool = ...,
     remote_side: Optional[Column[Any]] = ...,
 ) -> RelationshipProperty[Any]: ...
 
@@ -81,4 +84,6 @@ def backref(
     viewonly: bool = ...,
     lazy: Union[str, bool, None] = ...,
     uselist: Optional[bool] = ...,
+    passive_deletes: bool = ...,
+    passive_updates: bool = ...,
 ) -> Tuple[str, Dict[str, Any]]: ...
