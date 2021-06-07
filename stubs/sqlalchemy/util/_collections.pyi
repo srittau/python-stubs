@@ -1,6 +1,9 @@
-from typing import TypeVar, Generic
+from typing import Any, TypeVar, Generic
 
 _T = TypeVar("_T")
+
+class OrderedSet(set):
+    def __getattr__(self, __item: str) -> Any: ...  # incomplete
 
 class ImmutableContainer: ...
 
@@ -9,3 +12,7 @@ class Properties(Generic[_T]):
 
 class OrderedProperties(Properties[_T], Generic[_T]): ...
 class ImmutableProperties(ImmutableContainer, Properties[_T], Generic[_T]): ...
+
+ordered_column_set = OrderedSet
+
+def __getattr__(__name: str) -> Any: ...  # incomplete

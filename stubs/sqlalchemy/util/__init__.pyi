@@ -1,6 +1,8 @@
 from ._collections import (
     ImmutableContainer as ImmutableContainer,
-    Properties as Properties,
-    OrderedProperties as OrderedProperties,
     ImmutableProperties as ImmutableProperties,
+    OrderedProperties as OrderedProperties,
+    Properties as Properties,
+    ordered_column_set as ordered_column_set,
 )
+from .langhelpers import HasMemoized as HasMemoized

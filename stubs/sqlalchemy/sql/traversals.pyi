@@ -1,0 +1,9 @@
+from typing import Any
+
+from ..util import HasMemoized
+
+class HasCacheKey: ...
+class MemoizedHasCacheKey(HasCacheKey, HasMemoized): ...
+class HasCopyInternals: ...
+
+def __getattr__(__item: str) -> Any: ...  # incomplete
