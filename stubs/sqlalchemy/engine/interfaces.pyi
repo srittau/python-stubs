@@ -62,7 +62,7 @@ class ExceptionContext:
     engine: Engine | None
     cursor: DBAPICursor | None
     statement: str | None
-    parameters: Collection | None
+    parameters: Collection[Any] | None
     original_exception: BaseException | None
     sqlalchemy_exception: StatementError | None
     chained_exception: BaseException | None

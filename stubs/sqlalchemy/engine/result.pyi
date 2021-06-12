@@ -10,7 +10,7 @@ class ResultProxy:
 class ResultMetaData:
     def __getattr__(self, __item: str) -> Any: ...  # incomplete
 
-class RMKeyView(KeysView):
+class RMKeyView(KeysView[Any]):
     def __getattr__(self, __item: str) -> Any: ...  # incomplete
 
 class SimpleResultMetaData(ResultMetaData):

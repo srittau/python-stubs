@@ -1,11 +1,13 @@
-from collections.abc import Sequence
-from typing import Any
+from collections.abc import Iterable, Sequence
+from typing import Any, Generic, TypeVar
 
 from ..util import HasMemoized, ImmutableProperties, ordered_column_set
 from .elements import ColumnElement
 from .roles import StatementRole
 from .traversals import HasCacheKey, HasCopyInternals
 from .visitors import ClauseVisitor
+
+_V = TypeVar("_V")
 
 class Immutable:
     def __getattr__(self, __item: str) -> Any: ...  # incomplete
@@ -35,7 +37,7 @@ class ExecutableOption(HasCopyInternals, HasCacheKey): ...
 class Executable(StatementRole, Generative):
     def __getattr__(self, __item: str) -> Any: ...  # incomplete
 
-class prefix_anon_map(dict):
+class prefix_anon_map(dict[str, _V], Generic[_V]):
     def __missing__(self, key: str) -> str: ...
 
 class SchemaEventTarget: ...
@@ -53,4 +55,8 @@ class ImmutableColumnCollection(ImmutableProperties[ColumnElement[Any]], ColumnC
     def __getattr__(self, __item: str) -> Any: ...  # incomplete
 
 class ColumnSet(ordered_column_set):
-    def __getattr__(self, __item: str) -> Any: ...  # incomplete
+    def contains_column(self, col: ColumnElement[Any]) -> bool: ...
+    def extend(self, cols: Iterable[ColumnElement[Any]]) -> None: ...
+    def __add__(self, other: ColumnSet) -> list[ColumnElement[Any]]: ...
+    def __eq__(self, other: ColumnSet) -> bool: ...  # type: ignore
+    def __hash__(self) -> int: ...  # type: ignore

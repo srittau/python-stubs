@@ -1,11 +1,11 @@
-from typing import Union, TypeVar, Generic
+from typing import TypeVar, Generic
 
 from . import operators
 
 _T = TypeVar("_T")
 
 
-def not_(clause: Union[ClauseElement, None]) -> ClauseElement: ...
+def not_(clause: ClauseElement | None) -> ClauseElement: ...
 
 class ClauseElement: ...
 # TODO: incomplete
