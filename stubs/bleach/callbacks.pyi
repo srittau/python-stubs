@@ -1,6 +1,0 @@
-from typing import MutableMapping, Any
-
-_Attrs = MutableMapping[Any, str]
-
-def nofollow(attrs: _Attrs, new: bool = ...) -> _Attrs: ...
-def target_blank(attrs: _Attrs, new: bool = ...) -> _Attrs: ...
