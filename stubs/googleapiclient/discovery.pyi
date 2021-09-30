@@ -3,7 +3,6 @@ from typing import Type, Any
 from httplib2 import Http
 
 from google.oauth2.service_account import Credentials
-from oauth2client.client import Credentials as OACredentials
 
 from .discovery_cache.base import Cache
 from .http import HttpRequest
@@ -21,7 +20,7 @@ def build(
     developerKey: str | None = ...,
     model: Model | None = ...,
     requestBuilder: Type[HttpRequest] = ...,
-    credentials: Credentials | OACredentials | None = ...,
+    credentials: Credentials | None = ...,
     cache_discovery: bool = ...,
     cache: Cache | None = ...,
 ) -> Resource: ...
