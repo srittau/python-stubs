@@ -37,6 +37,7 @@ def relationship(
     secondaryjoin: Optional[Union[str, BooleanClauseList]] = ...,
     foreign_keys: List[Column[Any]] = ...,
     *,  # FIXME: more arguments
+    cascade: bool | str = ...,
     order_by: Union[_OrderType, Callable[[], _OrderType]] = ...,
     backref: Union[None, str, Tuple[str, Dict[str, Any]]] = ...,
     lazy: Union[str, bool, None] = ...,
@@ -51,6 +52,7 @@ def relationship(
     secondaryjoin: Optional[Union[str, BooleanClauseList]] = ...,
     foreign_keys: List[Column[Any]] = ...,
     *,  # FIXME: more arguments
+    cascade: bool | str = ...,
     order_by: Union[_OrderType, Callable[[], _OrderType]] = ...,
     backref: Union[None, str, Tuple[str, Dict[str, Any]]] = ...,
     lazy: Union[str, bool, None] = ...,
@@ -68,6 +70,7 @@ def relationship(
     order_by: Union[_OrderType, Callable[[], _OrderType]] = ...,
     backref: Union[None, str, Tuple[str, Dict[str, Any]]] = ...,
     *,  # FIXME: more arguments
+    cascade: bool | str = ...,
     lazy: Union[str, bool, None] = ...,
     passive_deletes: bool = ...,
     passive_updates: bool = ...,
