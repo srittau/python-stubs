@@ -10,7 +10,7 @@ from typing import (
 
 from ..dialects.postgresql import UUID
 from ..engine import Engine
-from ..ext.declarative.api import _DeclarativeBase
+from ..orm.decl_api import _DeclarativeBase
 from .base import DialectKWArgs, SchemaEventTarget
 from .elements import ColumnClause
 from .selectable import TableClause

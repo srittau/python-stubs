@@ -1,6 +1,6 @@
 from typing import overload, Generic, TypeVar, Any
 
-from ..ext.declarative.api import _DeclarativeBase
+from .decl_api import _DeclarativeBase
 from .interfaces import StrategizedProperty
 
 _T = TypeVar("_T")

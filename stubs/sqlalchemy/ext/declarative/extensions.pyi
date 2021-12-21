@@ -1,4 +1,6 @@
-def instrument_declarative(cls, cls_registry, metadata) -> None: ...
+from typing import Any
+
+def instrument_declarative(cls: Any, cls_registry: Any, metadata: Any) -> None: ...
 
 class ConcreteBase:
     @classmethod
@@ -11,4 +13,4 @@ class AbstractConcreteBase(ConcreteBase):
 
 class DeferredReflection:
     @classmethod
-    def prepare(cls, engine) -> None: ...
+    def prepare(cls, engine: Any) -> None: ...
