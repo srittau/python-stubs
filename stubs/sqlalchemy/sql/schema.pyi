@@ -188,7 +188,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     @overload
     def __init__(
         self: Column[Decimal],
-        type_: Type[DECIMAL],
+        type_: Type[DECIMAL] | DECIMAL,
         *args: Any,
         primary_key: bool = ...,
         nullable: Literal[False],
@@ -199,7 +199,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     @overload
     def __init__(
         self: Column[Decimal],
-        type_: Type[DECIMAL],
+        type_: Type[DECIMAL] | DECIMAL,
         *args: Any,
         primary_key: Literal[True],
         nullable: bool = ...,
@@ -210,7 +210,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     @overload
     def __init__(
         self: Column[Optional[Decimal]],
-        type_: Type[DECIMAL],
+        type_: Type[DECIMAL] | DECIMAL,
         *args: Any,
         primary_key: bool = ...,
         nullable: Literal[True] = ...,
@@ -222,7 +222,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     def __init__(
         self: Column[Decimal],
         column: str,
-        type_: Type[DECIMAL],
+        type_: Type[DECIMAL] | DECIMAL,
         *args: Any,
         primary_key: bool = ...,
         nullable: Literal[False],
@@ -234,7 +234,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     def __init__(
         self: Column[Decimal],
         column: str,
-        type_: Type[DECIMAL],
+        type_: Type[DECIMAL] | DECIMAL,
         *args: Any,
         primary_key: Literal[True],
         nullable: bool = ...,
@@ -246,7 +246,7 @@ class Column(DialectKWArgs, SchemaItem, ColumnClause[_T], Generic[_T]):
     def __init__(
         self: Column[Optional[Decimal]],
         column: str,
-        type_: Type[DECIMAL],
+        type_: Type[DECIMAL] | DECIMAL,
         *args: Any,
         primary_key: bool = ...,
         nullable: Literal[True] = ...,
