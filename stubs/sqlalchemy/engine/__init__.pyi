@@ -7,5 +7,6 @@ from .base import (
 )
 from .interfaces import Connectable as Connectable, Dialect as Dialect
 from .result import ResultProxy as ResultProxy
+from .row import Row as Row
 
 def create_engine(*args: Any, **kwargs: Any) -> Engine: ...
