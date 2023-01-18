@@ -2,6 +2,7 @@ from typing import Any
 
 
 class Row:
+    def __getitem__(self, item: int) -> Any: ...
     @property
     def _mapping(self) -> RowMapping: ...
 
