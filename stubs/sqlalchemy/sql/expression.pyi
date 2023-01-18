@@ -1,6 +1,6 @@
 from typing import Any, Optional
 
-from .elements import BooleanClauseList, ClauseElement
+from .elements import BooleanClauseList, ClauseElement, TextClause
 
 from .functions import (
     func as func,
@@ -13,3 +13,5 @@ def desc(column: Any) -> Any: ...
 
 def and_(*clauses: ClauseElement) -> BooleanClauseList: ...
 def or_(*clauses: ClauseElement) -> BooleanClauseList: ...
+
+def text(text: str) -> TextClause: ...

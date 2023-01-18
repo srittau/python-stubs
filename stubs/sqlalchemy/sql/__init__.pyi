@@ -9,4 +9,5 @@ from .expression import (
     insert as insert,
     or_ as or_,
     select as select,
+    text as text,
 )

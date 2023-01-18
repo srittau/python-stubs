@@ -12,6 +12,7 @@ from .sql import (
     not_ as not_,
     or_ as or_,
     select as select,
+    text as text,
 )
 from .types import (
     Boolean as Boolean,
