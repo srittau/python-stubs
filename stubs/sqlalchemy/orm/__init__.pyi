@@ -1,20 +1,21 @@
 # incomplete
 
 from typing import (
-    overload,
     Any,
-    Optional,
-    List,
-    Tuple,
+    Callable,
     Dict,
-    Union,
+    List,
+    Optional,
+    Tuple,
     Type,
     TypeVar,
-    Callable,
+    Union,
+    overload,
 )
 
 from ..sql.elements import BooleanClauseList
 from ..sql.schema import Column, Table
+from .decl_api import declarative_base as declarative_base
 from .query import Query as Query
 from .relationships import RelationshipProperty as RelationshipProperty
 from .session import Session as Session, sessionmaker as sessionmaker
@@ -28,7 +29,6 @@ load_only: Any
 
 def compile_mappers() -> None: ...
 def clear_mappers() -> None: ...
-
 @overload
 def relationship(
     argument: Type[_T],
@@ -43,7 +43,6 @@ def relationship(
     lazy: Union[str, bool, None] = ...,
     remote_side: Optional[Column[Any]] = ...,
 ) -> RelationshipProperty[Optional[_T]]: ...
-
 @overload
 def relationship(
     argument: Type[_T],
@@ -58,7 +57,6 @@ def relationship(
     lazy: Union[str, bool, None] = ...,
     remote_side: Optional[Column[Any]] = ...,
 ) -> RelationshipProperty[List[_T]]: ...
-
 @overload
 def relationship(
     argument: Any,
