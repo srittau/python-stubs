@@ -15,6 +15,7 @@ from typing import (
 
 from ..sql.elements import BooleanClauseList
 from ..sql.schema import Column, Table
+from .attributes import Mapped as Mapped
 from .decl_api import declarative_base as declarative_base
 from .query import Query as Query
 from .relationships import RelationshipProperty as RelationshipProperty

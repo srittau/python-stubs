@@ -1,0 +1,16 @@
+from typing import Any, Generic, TypeVar, overload
+
+_T = TypeVar("_T")
+
+class QueryableAttribute: ...  # FIXME: incomplete
+
+class Mapped(QueryableAttribute, Generic[_T]):
+    @overload
+    def __get__(self, __instance: None, __owner: object) -> InstrumentedAttribute[_T]: ...
+    @overload
+    def __get__(self, __instance: Any, __owner: object) -> _T: ...
+    def __set__(self, instance: Any, value: _T) -> None: ...
+    def __delete__(self, instance: object) -> None: ...
+
+
+class InstrumentedAttribute(Mapped[_T], Generic[_T]): ...
